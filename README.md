@@ -1,5 +1,7 @@
 # SportSync: Sports Tournament Management System
 
+**Live Demo**: [https://sportsync-delta.vercel.app/](https://sportsync-delta.vercel.app/)
+
 SportSync is a comprehensive MERN-stack application designed for the professional administration and coordination of sports tournaments. The platform facilitates a streamlined workflow for organizers to create events, manage match scheduling, and maintain real-time scoring, while providing athletes with a unified interface for team registration and performance tracking.
 
 ---
