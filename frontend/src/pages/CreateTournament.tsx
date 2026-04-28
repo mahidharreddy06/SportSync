@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { Trophy, Calendar, Zap, MapPin, ArrowLeft, Save, Plus } from "lucide-react";
 import axios from "axios";
 import { toast } from "sonner";
+import { API_BASE_URL } from "../config";
 
 export default function CreateTournament() {
   const [formData, setFormData] = useState({
@@ -21,7 +22,7 @@ export default function CreateTournament() {
     const token = localStorage.getItem("token");
     
     try {
-      await axios.post("http://localhost:5000/api/tournaments", formData, {
+      await axios.post(`${API_BASE_URL}/api/tournaments`, formData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success("Tournament created successfully!");

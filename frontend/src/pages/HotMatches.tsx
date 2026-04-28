@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
-import { Flame, Calendar, Clock, Trophy, Target } from "lucide-react";
+import { Flame, Trophy, Calendar } from "lucide-react";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 export default function HotMatches() {
   const [matches, setMatches] = useState<any[]>([]);
@@ -10,8 +11,7 @@ export default function HotMatches() {
   useEffect(() => {
     const fetchMatches = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/matches");
-        // For demonstration, all matches are considered hot, but in real life we could filter
+        const res = await axios.get(`${API_BASE_URL}/api/matches`);
         setMatches(res.data);
       } catch (err) {
         console.error("Failed to fetch hot matches", err);

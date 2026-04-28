@@ -62,11 +62,17 @@ git clone <repository-link>
 ```
 
 ### 2. Environment Configuration
-Establish a `.env` file within the `backend/` directory with the following variables:
+
+#### Backend (.env or Render.com Environment Variables)
 ```env
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 GOOGLE_CLIENT_ID=your_google_client_id
+```
+
+#### Frontend (Vercel.com Environment Variables)
+```env
+VITE_API_URL=your_deployed_backend_url (e.g., https://sportsync-api.onrender.com)
 ```
 
 ### 3. Dependency Management

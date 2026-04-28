@@ -4,6 +4,7 @@ import { Shield } from "lucide-react";
 import axios from "axios";
 import { toast } from "sonner";
 import { GoogleLogin } from "@react-oauth/google";
+import { API_BASE_URL } from "../config";
 
 export default function Register() {
   const [role, setRole] = useState("user");
@@ -11,8 +12,7 @@ export default function Register() {
 
   const handleGoogleSuccess = async (credentialResponse: any) => {
     try {
-      const apiBase = "http://localhost:5000/api/auth";
-      const res = await axios.post(`${apiBase}/google`, {
+      const res = await axios.post(`${API_BASE_URL}/api/auth/google`, {
         token: credentialResponse.credential,
         role
       });

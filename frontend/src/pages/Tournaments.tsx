@@ -2,12 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Trophy, Calendar, Users, ArrowRight, Activity, Flame } from "lucide-react";
 import { Link } from "wouter";
+import { API_BASE_URL } from "../config";
 
 export default function Tournaments() {
   const { data: tournaments, isLoading } = useQuery({
     queryKey: ["tournaments"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:5000/api/tournaments");
+      const res = await axios.get(`${API_BASE_URL}/api/tournaments`);
       return res.data;
     }
   });

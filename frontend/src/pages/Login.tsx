@@ -2,14 +2,14 @@ import { Link, useLocation } from "wouter";
 import { toast } from "sonner";
 import { GoogleLogin } from "@react-oauth/google";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 export default function Login() {
   const [, setLocation] = useLocation();
 
   const handleGoogleSuccess = async (credentialResponse: any) => {
     try {
-      const apiBase = "http://localhost:5000/api/auth";
-      const res = await axios.post(`${apiBase}/google`, {
+      const res = await axios.post(`${API_BASE_URL}/api/auth/google`, {
         token: credentialResponse.credential
       });
       localStorage.setItem("token", res.data.token);

@@ -3,6 +3,7 @@ import { Link, useParams } from "wouter";
 import { Trophy, Calendar, MapPin, Users, ArrowLeft, Clock, Shield, Plus, Edit2, Save } from "lucide-react";
 import axios from "axios";
 import { toast } from "sonner";
+import { API_BASE_URL } from "../config";
 
 export default function TournamentDetail() {
   const { id } = useParams();
@@ -24,16 +25,16 @@ export default function TournamentDetail() {
 
     const fetchData = async () => {
       try {
-        const tournRes = await axios.get(`http://localhost:5000/api/tournaments/${id}`);
+        const tournRes = await axios.get(`${API_BASE_URL}/api/tournaments/${id}`);
         setTournament(tournRes.data);
 
         try {
-          const teamsRes = await axios.get(`http://localhost:5000/api/teams/${id}`);
+          const teamsRes = await axios.get(`${API_BASE_URL}/api/teams/${id}`);
           setTeams(teamsRes.data);
         } catch (e) { console.error("Teams fetch error", e); }
 
         try {
-          const matchesRes = await axios.get(`http://localhost:5000/api/matches?tournamentId=${id}`);
+          const matchesRes = await axios.get(`${API_BASE_URL}/api/matches?tournamentId=${id}`);
           setMatches(matchesRes.data);
         } catch (e) { console.error("Matches fetch error", e); }
 
@@ -55,7 +56,7 @@ export default function TournamentDetail() {
     try {
       const token = localStorage.getItem("token");
       if (!token) return toast.error("Please login first");
-      const res = await axios.post("http://localhost:5000/api/teams", 
+      const res = await axios.post(`${API_BASE_URL}/api/teams`, 
         { name, members, tournamentId: id },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -72,13 +73,13 @@ export default function TournamentDetail() {
     try {
       const token = localStorage.getItem("token");
       if (!token) return toast.error("Please login first");
-      const res = await axios.post("http://localhost:5000/api/matches", 
+      const res = await axios.post(`${API_BASE_URL}/api/matches`, 
         { ...newMatch, tournamentId: id },
         { headers: { Authorization: `Bearer ${token}` } }
       );
       toast.success("Match Scheduled!");
       // Refetch matches to get populated team names
-      const matchesRes = await axios.get(`http://localhost:5000/api/matches?tournamentId=${id}`);
+      const matchesRes = await axios.get(`${API_BASE_URL}/api/matches?tournamentId=${id}`);
       setMatches(matchesRes.data);
       setNewMatch({ team1Id: "", team2Id: "", date: "" });
     } catch (err: any) {
@@ -90,13 +91,13 @@ export default function TournamentDetail() {
     try {
       const token = localStorage.getItem("token");
       if (!token) return toast.error("Please login first");
-      await axios.put(`http://localhost:5000/api/matches/${matchId}/score`, 
+      await axios.put(`${API_BASE_URL}/api/matches/${matchId}/score`, 
         matchScore,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       toast.success("Score Updated!");
       setEditingMatch(null);
-      const matchesRes = await axios.get(`http://localhost:5000/api/matches?tournamentId=${id}`);
+      const matchesRes = await axios.get(`${API_BASE_URL}/api/matches?tournamentId=${id}`);
       setMatches(matchesRes.data);
     } catch (err: any) {
       toast.error(err.response?.data?.message || "Failed to update score");
