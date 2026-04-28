@@ -99,7 +99,7 @@ start_mern.bat
 
 - **Technical Explanation Video**: [Link to be provided]
 - **Operational Overview Video**: [Link to be provided]
-- **Source Code Repository**: [GitHub Link]
+- **Source Code Repository**: https://github.com/mahidharreddy06/SportSync
 
 ---
 
