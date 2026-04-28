@@ -43,3 +43,4 @@ coverage/
 .parcel-cache/
 .eslintcache
 .stylelintcache
+*.bat
