@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --background: 240 10% 3.9%; /* #0E0E10 */
+  --foreground: 0 0% 98%;
+  --card: 240 5.9% 10%; /* #1C1C1E */
+  --card-foreground: 0 0% 98%;
+  --primary: 0 84.2% 60.2%; /* #EF4444 */
+  --primary-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%; /* #2D2D30 */
+  --accent: 0 84.2% 60.2%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0E0E10;
+  color: #FFFFFF;
+  -webkit-font-smoothing: antialiased;
+  @apply overflow-x-hidden;
+}
+
+.card-gradient {
+  background: linear-gradient(180deg, rgba(28, 28, 30, 0.8) 0%, rgba(28, 28, 30, 1) 100%);
+}
+
+.score-text {
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  font-style: italic;
+}
+
+.red-glow {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.15);
+}
+
+.red-glow-border {
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0E0E10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2D2D30;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #EF4444;
+}
