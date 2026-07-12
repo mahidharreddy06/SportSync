@@ -1,6 +1,6 @@
 # SportSync: Sports Tournament Management System
 
-WEBSITE IS DOWN
+**********WEBSITE IS DOWN**********
 
 **Live Demo**: [https://sportsync-delta.vercel.app/](https://sportsync-delta.vercel.app/)
 
